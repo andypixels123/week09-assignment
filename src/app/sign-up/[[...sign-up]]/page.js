@@ -12,7 +12,7 @@ export default function SignUpPage() {
   return (
     <>
       <Header />
-      <div className="flex justify-center">
+      <div className="sign-up">
         <SignUp />
       </div>
       <SignedIn>

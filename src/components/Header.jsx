@@ -14,8 +14,8 @@ export default function Header() {
     return (
         <>
             <SignedOut>
-                <SignInButton className="bg-black text-white cursor-pointer px-8 py-3 m-3" />
-                <SignUpButton className="bg-black text-white cursor-pointer px-8 py-3 m-3" />
+                <SignUpButton><button className="button">Sign Up</button></SignUpButton>
+                <SignInButton><button className="button">Login</button></SignInButton>
             </SignedOut>
             <SignedIn>
                 <UserButton />

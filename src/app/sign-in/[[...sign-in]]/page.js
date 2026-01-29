@@ -6,7 +6,7 @@ export default function SignInPage() {
     return (
         <>
             <Header />
-            <div className="flex justify-center">
+            <div className="sign-in">
                 <SignIn />
             </div>
         </>
