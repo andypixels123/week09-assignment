@@ -1,0 +1,14 @@
+//TODO: render a form to INSERT post data into the posts table
+//- We also need to insert the userId into the posts table, make sure you have some SQL that READS the userId from the user's table OR use the auth() function from clerk to get the userId
+
+import Header from "@/components/Header";
+
+export default function Posts() {
+  return (
+    <>
+      <Header />
+      <h1>View posts</h1>
+      <form action=""></form>
+    </>
+  );
+}
