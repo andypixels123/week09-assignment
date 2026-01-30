@@ -15,13 +15,6 @@ export default function SignUpPage() {
       <div className="sign-up">
         <SignUp />
       </div>
-      <SignedIn>
-        <form>
-          <input type="text" name="nickname" />
-          <textarea type="text" name="bio" />
-          <input type="number" name="age" />
-        </form>
-      </SignedIn>
     </>
   );
 }
