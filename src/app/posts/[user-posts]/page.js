@@ -8,6 +8,8 @@ export default function Posts() {
   return (
     <>
       <Header />
+      <Link href="/">Home</Link>
+      <Link href="/profile/:[username]">Profile</Link>
       <h1>Timeline Posts</h1>
       {/* show posts here */}
       <SignedIn>

@@ -20,7 +20,6 @@ export default function Header() {
             <SignedIn>
                 <UserButton />
             </SignedIn>
-            <Link href="/">Home</Link>
         </>
     );
 }

@@ -8,6 +8,7 @@ export default function NewPost() {
     <>
       <Header />
       <SignedIn>
+        <Link href="/">Home</Link>
         <Link href="/profile/:[username]">Profile</Link>
       </SignedIn>
       <h1>Create a new post!</h1>

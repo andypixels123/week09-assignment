@@ -16,11 +16,11 @@ export default function ProfilePage() {
   //db queries to GET data from the tables
   return (
     <>
-    <Header />
+      <Header />
+      <Link href="/">Home</Link>
+      <Link href="/posts/:[user-posts]">Posts</Link>
       <h1>User&apos;s Profile Page</h1>
       <h2>User&apos;s Info</h2>
-      <h3>User&apos;s posts</h3>
-      <Link href="/posts">Posts</Link>
     </>
   );
 }
