@@ -3,12 +3,11 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SignedIn } from "@clerk/nextjs";
 import Link from "next/link";
-import { auth } from "@clerk/nextjs/server";
 import { db } from "@/utils/dbConn";
 
-export default async function Posts() {
-  // user id from Clerk
-  const { userId } = await auth();
+export default async function Posts({ params }) {
+  const { userId } = await params;
+
   // fetch posts data from db
   const { rows } = await db.query(
     `SELECT id, content, title FROM social_posts WHERE user_id=$1 ORDER BY id DESC`, [userId]
@@ -22,7 +21,7 @@ export default async function Posts() {
         <section>
           <nav>
             <Link href="/">Home</Link>
-            <Link href="/profile">Profile</Link>
+            <Link href={`/profile/${userId}`}>Profile</Link>
           </nav>
 
           {rows.map((row) => (
@@ -34,7 +33,7 @@ export default async function Posts() {
 
           <SignedIn>
             <nav>
-              <Link href="/posts/new-post">create a new post</Link>
+              <Link href="/timeline/new-post">create a new post</Link>
             </nav>
           </SignedIn>
         </section>

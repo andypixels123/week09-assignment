@@ -2,13 +2,11 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { auth } from "@clerk/nextjs/server"
 import { SignedIn, SignedOut, SignIn } from "@clerk/nextjs";
 import { db } from "@/utils/dbConn";
 
-export default async function ProfilePage() {
-  // user id from Clerk
-  const { userId } = await auth();
+export default async function ProfilePage({ params }) {
+  const { userId } = await params;
 
   // fetch profile data from db
   const profileQuery = await db.query(

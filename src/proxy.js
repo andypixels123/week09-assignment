@@ -1,9 +1,10 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-//clerkMiddleware will have a list of routes that are protected --> this is the only custom part
+// clerkMiddleware will have a list of routes that are protected --> this is the only custom part
 const isProtectedRoute = createRouteMatcher(["/timeline", "/profile/(.*)"]);
 
-//clerkMiddleware will compare the route from the list and the current route the user is navigating to --> if the current route matches one from the list, it will trigger auth check
+// clerkMiddleware will compare the route from the list and the current route the user is navigating to
+// --> if the current route matches one from the list, it will trigger auth check
 export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) await auth.protect();
 });

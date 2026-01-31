@@ -11,13 +11,15 @@ import { db } from "@/utils/dbConn";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export default function NewPost() {
+export default async function NewPost() {
+
+  const { userId } = await auth();
 
   async function handleSubmit(formData) {
     "use server";
 
     // get user id from Clerk object
-    const { userId } = await auth();
+
     const { postTitle, postContent } = Object.fromEntries(formData);
 
     // insert data into database
@@ -32,9 +34,9 @@ export default function NewPost() {
 
     // revalidate
     revalidatePath("/new-post");
-    revalidatePath("/posts");
+    revalidatePath(`/timeline/${userId}`);
     // redirect
-    redirect("/posts");
+    redirect(`/timeline/${userId}`);
   }
 
   return (
@@ -44,7 +46,7 @@ export default function NewPost() {
         <nav>
           <Link href="/">Home</Link>
           <SignedIn>
-            <Link href="/profile">Profile</Link>
+            <Link href={`/profile/${userId}`}>Profile</Link>
           </SignedIn>
         </nav>
         <h1>Create a post!</h1>
