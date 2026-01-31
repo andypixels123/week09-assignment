@@ -8,8 +8,11 @@ export default function SignInPage() {
     return (
         <>
             <Header />
+            <h1>Login</h1>
             <main>
-                <Link href="/">Home</Link>
+                <nav>
+                    <Link href="/">Home</Link>
+                </nav>
                 <div className="sign-in">
                     <SignIn />
                 </div>

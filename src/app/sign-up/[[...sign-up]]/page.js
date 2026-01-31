@@ -9,8 +9,11 @@ export default function SignUpPage() {
   return (
     <>
       <Header />
+      <h1>Sign up</h1>
       <main>
-        <Link href="/">Home</Link>
+        <nav>
+          <Link href="/">Home</Link>
+        </nav>
         <div className="sign-up">
           <SignUp />
         </div>

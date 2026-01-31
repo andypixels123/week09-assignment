@@ -1,46 +1,62 @@
 // todo: render a form to INSERT post data into the posts table
-//- We also need to insert the userId into the posts table, make sure you have some SQL that READS the userId from the user's table OR use the auth() function from clerk to get the userId
+// Also insert the userId into the posts table,
+// make sure you have some SQL that READS the userId from the user's table
+// OR use the auth() function from clerk to get the userId
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { SignedIn } from "@clerk/nextjs";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
+import { db } from "@/utils/dbConn";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export default function NewPost() {
 
-  async function handleSubmit() {
+  async function handleSubmit(formData) {
     "use server";
+
     // get user id from Clerk object
     const { userId } = await auth();
-    console.log(userId);
+    const { postTitle, postContent } = Object.fromEntries(formData);
 
-    // todo: send new post to db
+    // insert data into database
+    db.query(
+      `INSERT INTO social_posts(user_id, content, title) VALUES($1, $2, $3)`,
+      [
+        userId,
+        postContent,
+        postTitle
+      ],
+    );
 
-    // todo: check working correctly
     // revalidate
-    // revalidatePath("/posts");
+    revalidatePath("/new-post");
+    revalidatePath("/posts");
     // redirect
-    // redirect("/posts");
+    redirect("/posts");
   }
 
   return (
     <>
       <Header />
       <main>
-        <SignedIn>
-          <nav>
-            <Link href="/">Home</Link>
+        <nav>
+          <Link href="/">Home</Link>
+          <SignedIn>
             <Link href="/profile">Profile</Link>
-          </nav>
+          </SignedIn>
+        </nav>
+        <h1>Create a post!</h1>
+        <SignedIn>
+          <form action={handleSubmit} className="my-form">
+            <label htmlFor="postTitle">Post Title</label>
+            <input type="text" name="postTitle" placeholder="name your post..." />
+            <label htmlFor="postContent">Post Content</label>
+            <textarea type="text" rows={5} name="postContent" placeholder="write your post..."></textarea>
+            <button type="submit">Submit</button>
+          </form>
         </SignedIn>
-        <h2>Create a new post!</h2>
-        <form action={handleSubmit} className="my-form">
-          <label htmlFor="postTitle">Post Title</label>
-          <input type="text" name="postTitle" placeholder="name your post" />
-          <label htmlFor="postContent">Post Content</label>
-          <textarea type="text" rows={5} name="postContent" placeholder="write your post"></textarea>
-          <button type="submit">Submit</button>
-        </form>
       </main>
       <Footer />
     </>

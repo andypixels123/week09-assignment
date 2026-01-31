@@ -29,7 +29,8 @@ export default async function ProfilePage() {
 
   // calculate user's age
   const userAge = (new Date().getFullYear()) - userData.born;
-  console.log(userAge);
+  // console.log(userAge);
+
 
   return (
     <>
@@ -49,12 +50,14 @@ export default async function ProfilePage() {
               <SignIn />
             </div>
           </SignedOut>
-          <div className="user-data">
-            <p>Name: {userData.username}</p>
-            <p>Age: {userAge}</p>
-            <p>Gender: {userData.gender}</p>
-            <p>Hobbies and Interests: {userData.hobbies}</p>
-          </div>
+          <SignedIn>
+            <div className="user-data">
+              <p>Name: {userData.username}</p>
+              <p>Age: {userAge}</p>
+              <p>Gender: {userData.gender}</p>
+              <p>Hobbies and Interests: {userData.hobbies}</p>
+            </div>
+          </SignedIn>
         </section>
       </main >
       <Footer />

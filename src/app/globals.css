@@ -20,7 +20,8 @@ h3,
 nav,
 header,
 footer,
-.user-data {
+.user-data,
+.user-post {
     text-align: center;
 }
 
@@ -30,13 +31,17 @@ main {
 }
 
 p,
-a,
+nav a,
 h1,
 h2,
 h3,
 label,
 .my-form button {
     letter-spacing: 2px;
+}
+
+h3 {
+    margin: 0 0 20px 0;
 }
 
 .sign-in,
@@ -46,11 +51,7 @@ label,
     margin: 5% 2%;
 }
 
-a {
-    text-decoration: none;
-}
-
-a,
+nav a,
 button,
 .button {
     cursor: pointer;
@@ -92,6 +93,7 @@ nav {
 
 nav a {
     flex: 1;
+    text-decoration: none;
 }
 
 .my-form {
@@ -100,4 +102,10 @@ nav a {
 
 .my-form button {
     width: 100%;
+}
+
+.user-post {
+    margin: 0 0 10px 0;
+    padding: 1em 1em 1.4em 1em;
+    background-color: #fff;
 }
