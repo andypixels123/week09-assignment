@@ -1,20 +1,21 @@
-// todo: render a sign-up page
-//- Clerk component
-//- A form to collect other user data (bio, nickname, location, interests...)
-//- Insert user's data into users table, so we can render it in the profile page
-
-// this is the sign-up page
+// sign-up page with Clerk component
 import Header from "@/components/Header";
-import { SignedIn, SignUp } from "@clerk/nextjs";
+import Footer from "@/components/Footer";
+import { SignUp } from "@clerk/nextjs";
+import Link from "next/link";
 
-//Extra: create another nested route called createProfile where the user can complete their personal info as a second step in the sign-up process
+// redirects to 'create-profile' route after sign-up with environment variable redirect
 export default function SignUpPage() {
   return (
     <>
       <Header />
-      <div className="sign-up">
-        <SignUp />
-      </div>
+      <main>
+        <Link href="/">Home</Link>
+        <div className="sign-up">
+          <SignUp />
+        </div>
+      </main>
+      <Footer />
     </>
   );
 }

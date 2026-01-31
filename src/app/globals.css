@@ -8,23 +8,63 @@
 }
 
 body {
+    padding: 2%;
     color: #333;
     background-color: silver;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+h1,
+h2,
+h3,
+nav,
+header,
+footer,
+.user-data {
+    text-align: center;
+}
+
+main {
+    max-width: 900px;
+    margin: auto;
+}
+
+p,
+a,
+h1,
+h2,
+h3,
+label,
+.my-form button {
+    letter-spacing: 2px;
+}
+
+.sign-in,
+.sign-up {
+    display: flex;
+    justify-content: center;
+    margin: 5% 2%;
+}
+
 a {
-    color: #fff;
     text-decoration: none;
 }
 
 a,
-button {
+button,
+.button {
     cursor: pointer;
     font-size: 100%;
+    padding: 20px;
+    color: #fff;
+    background-color: #333;
 }
 
-form {
+button {
+    border: 0;
+}
+
+.my-form {
     max-width: 400px;
     margin: auto;
 }
@@ -33,21 +73,31 @@ label {
     padding: 0 0 10px 0;
 }
 
-input, textarea {
+.my-form input,
+.my-form textarea {
+    font-family: monospace;
+    margin: 5px 0 10px 0;
+    padding: 5px;
     display: block;
     width: 100%;
 }
 
-button {
-    padding: 20px;
-    color: #fff;
-    background-color: #000;
-    border: 0;
-}
-
-.sign-in,
-.sign-up {
+nav {
     display: flex;
     justify-content: center;
-    margin: 2%;
+    gap: 10px;
+    max-width: 500px;
+    margin: 50px auto;
+}
+
+nav a {
+    flex: 1;
+}
+
+.my-form {
+    margin: 50px auto;
+}
+
+.my-form button {
+    width: 100%;
 }
