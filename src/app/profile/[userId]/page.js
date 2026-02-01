@@ -21,16 +21,9 @@ export default async function ProfilePage({ params }) {
   return (
     <>
       <Header />
-      <h1>Profile Page</h1>
-      <h2>Profile Info</h2>
+      <h1>Profile Info</h1>
       <main>
         <section>
-          <nav>
-            <Link href="/">Home</Link>
-            <SignedIn>
-              <Link href={`/timeline/${userId}`}>Posts</Link>
-            </SignedIn>
-          </nav>
           <SignedOut>
             <div className="sign-in">
               <SignIn />
@@ -44,9 +37,12 @@ export default async function ProfilePage({ params }) {
               <p>Hobbies and Interests: {userData.hobbies}</p>
             </div>
           </SignedIn>
-        </section>
-        <section>
-          <h2>Friends</h2>
+          <nav>
+            <Link href="/">Home</Link>
+            <SignedIn>
+              <Link href={`/timeline/${userId}`}>Posts</Link>
+            </SignedIn>
+          </nav>
         </section>
       </main >
       <Footer />

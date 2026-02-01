@@ -27,12 +27,11 @@ export default async function HomePage() {
             </nav>
 
             <h2>Other Users</h2>
-
-            {rows.map((row) => (
-              <ul key={row.id}>
-                <li><Link href={`/profile/${row.id}`}>{row.user_name}</Link></li>
-              </ul>
-            ))}
+            <div className="user-list">
+              {rows.map((row) => (
+                <Link href={`/profile/${row.id}`} key={row.id}>{row.user_name}</Link>
+              ))}
+            </div>
 
           </SignedIn>
         </section>

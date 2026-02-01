@@ -10,12 +10,12 @@ export default function SignInPage() {
             <Header />
             <h1>Login</h1>
             <main>
-                <nav>
-                    <Link href="/">Home</Link>
-                </nav>
                 <div className="sign-in">
                     <SignIn />
                 </div>
+                <nav>
+                    <Link href="/">Home</Link>
+                </nav>
             </main>
             <Footer />
         </>

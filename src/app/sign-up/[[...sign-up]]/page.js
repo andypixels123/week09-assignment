@@ -11,12 +11,12 @@ export default function SignUpPage() {
       <Header />
       <h1>Sign up</h1>
       <main>
-        <nav>
-          <Link href="/">Home</Link>
-        </nav>
         <div className="sign-up">
           <SignUp />
         </div>
+        <nav>
+          <Link href="/">Home</Link>
+        </nav>
       </main>
       <Footer />
     </>

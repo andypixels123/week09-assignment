@@ -2,11 +2,14 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SignedIn } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { db } from "@/utils/dbConn";
 
 export default async function Posts({ params }) {
   const { userId } = await params;
+  const { id } = await currentUser();
+
   const { rows } = await db.query(
     `SELECT
     social_posts.id,
@@ -20,12 +23,10 @@ export default async function Posts({ params }) {
     [userId]
   );
 
-  let pageHeading;
+  let pageHeading = rows.length > 0 ? `${rows[0].user_name}'s Timeline` : "No Posts!";
 
-  if (rows.length > 0) {
-    pageHeading = `${rows[0].user_name}'s Timeline`;
-  } else {
-    pageHeading = "No Posts!";
+  if (userId === id) {
+    pageHeading = "Your Timeline";
   }
 
   return (
