@@ -5,6 +5,7 @@ import { SignedIn } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { db } from "@/utils/dbConn";
+import { notFound } from "next/navigation";
 
 export default async function Posts({ params }) {
   const { userId } = await params;
@@ -23,7 +24,7 @@ export default async function Posts({ params }) {
     [userId]
   );
 
-  let pageHeading = rows.length > 0 ? `${rows[0].user_name}'s Timeline` : "No Posts!";
+  let pageHeading = rows.length > 0 ? `${rows[0].user_name}'s Timeline` : notFound();
 
   if (userId === id) {
     pageHeading = "Your Timeline";
