@@ -18,24 +18,24 @@ export default async function Posts() {
   return (
     <>
       <Header />
-      <h1>Post Stream</h1>
       <main>
+        <h1>Post Stream</h1>
         <section>
           <nav>
-            <Link href="/">Home</Link>
-            <Link href={`/profile/${userId}`}>Profile</Link>
+            <Link href="/" title="home page">Home</Link>
+            <Link href={`/profile/${userId}`} title="profile page">Profile</Link>
           </nav>
 
           {rows.map((row) => (
-            <div className="user-post" key={row.id}>
+            <article className="user-post" key={row.id}>
               <h3>{row.title}</h3>
               <p>{row.content}</p>
-            </div>
+            </article>
           ))}
 
           <SignedIn>
             <nav>
-              <Link href="/timeline/new-post">create a new post</Link>
+              <Link href="/timeline/new-post" title="new post form">create a new post</Link>
             </nav>
           </SignedIn>
         </section>

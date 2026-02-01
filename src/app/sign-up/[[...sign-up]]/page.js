@@ -15,7 +15,7 @@ export default function SignUpPage() {
           <SignUp />
         </div>
         <nav>
-          <Link href="/">Home</Link>
+          <Link href="/" title="home page">Home</Link>
         </nav>
       </main>
       <Footer />

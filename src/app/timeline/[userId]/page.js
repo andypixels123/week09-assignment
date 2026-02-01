@@ -32,12 +32,12 @@ export default async function Posts({ params }) {
   return (
     <>
       <Header />
-      <h1>{pageHeading}</h1>
       <main>
+        <h1>{pageHeading}</h1>
         <section>
           <nav>
-            <Link href="/">Home</Link>
-            <Link href={`/profile/${userId}`}>Profile</Link>
+            <Link href="/" title="home page">Home</Link>
+            <Link href={`/profile/${userId}`} title="profile page">Profile</Link>
           </nav>
 
           {rows.map((row) => (
@@ -49,7 +49,7 @@ export default async function Posts({ params }) {
 
           <SignedIn>
             <nav>
-              <Link href="/timeline/new-post">create a new post</Link>
+              <Link href="/timeline/new-post" title="new post form">create a new post</Link>
             </nav>
           </SignedIn>
         </section>

@@ -14,7 +14,7 @@ export default function SignInPage() {
                     <SignIn />
                 </div>
                 <nav>
-                    <Link href="/">Home</Link>
+                    <Link href="/" title="home page">Home</Link>
                 </nav>
             </main>
             <Footer />

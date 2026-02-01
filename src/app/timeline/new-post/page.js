@@ -38,22 +38,22 @@ export default async function NewPost() {
     <>
       <Header />
       <main>
-        <nav>
-          <Link href="/">Home</Link>
-          <SignedIn>
-            <Link href={`/profile/${userId}`}>Profile</Link>
-          </SignedIn>
-        </nav>
-        <h1>Create a post!</h1>
+        <h1>New Post</h1>
         <SignedIn>
-          <form action={handleSubmit} className="my-form">
+          <form className="my-form" action={handleSubmit}>
             <label htmlFor="postTitle">Post Title</label>
-            <input type="text" name="postTitle" placeholder="name your post..." />
+            <input type="text" name="postTitle" placeholder="name your post..." required />
             <label htmlFor="postContent">Post Content</label>
-            <textarea type="text" rows={5} name="postContent" placeholder="write your post..."></textarea>
-            <button type="submit">Submit</button>
+            <textarea type="text" rows={10} name="postContent" placeholder="write your post..." required ></textarea>
+            <button type="submit" title="send post">Submit</button>
           </form>
         </SignedIn>
+        <nav>
+          <Link href="/" title="home page">Home</Link>
+          <SignedIn>
+            <Link href={`/profile/${userId}`} title="your profile page">Profile</Link>
+          </SignedIn>
+        </nav>
       </main>
       <Footer />
     </>

@@ -21,8 +21,8 @@ export default async function ProfilePage({ params }) {
   return (
     <>
       <Header />
-      <h1>Profile Info</h1>
       <main>
+        <h1>Profile Info</h1>
         <section>
           <SignedOut>
             <div className="sign-in">
@@ -38,9 +38,9 @@ export default async function ProfilePage({ params }) {
             </div>
           </SignedIn>
           <nav>
-            <Link href="/">Home</Link>
+            <Link href="/" title="home page">Home</Link>
             <SignedIn>
-              <Link href={`/timeline/${userId}`}>Posts</Link>
+              <Link href={`/timeline/${userId}`} title="your posts">Posts</Link>
             </SignedIn>
           </nav>
         </section>

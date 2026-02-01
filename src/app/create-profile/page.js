@@ -39,7 +39,7 @@ export default function CreateProfile() {
         // we are signed-in after sign-up
         <>
             <Header />
-            <h2>Create your profile!</h2>
+            <h2>Create Your Profile!</h2>
             <main>
                 <SignedIn>
                     <form className="my-form" action={handleSubmit}>
@@ -49,7 +49,7 @@ export default function CreateProfile() {
                         <input type="number" name="birthYear" max={(new Date().getFullYear()) - 16} required />
                         <label htmlFor="userHobbies">Interests / Hobbies</label>
                         <textarea type="text" name="userHobbies" rows="5" required />
-                        <button>Submit</button>
+                        <button title="submit form">Submit</button>
                     </form>
                 </SignedIn>
             </main>
