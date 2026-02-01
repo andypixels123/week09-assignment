@@ -16,7 +16,9 @@ export default function Header() {
             <SignedIn>
                 <UserButton />
             </SignedIn>
-            <Link href="/" className="logo" title="home"><h4>myface</h4></Link>
+            <div className="logo-box">
+                <Link className="logo" href="/" title="home"><h4>myface</h4></Link>
+            </div>
         </>
     );
 }
