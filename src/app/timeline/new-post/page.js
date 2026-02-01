@@ -12,14 +12,10 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export default async function NewPost() {
-
   const { userId } = await auth();
 
   async function handleSubmit(formData) {
     "use server";
-
-    // get user id from Clerk object
-
     const { postTitle, postContent } = Object.fromEntries(formData);
 
     // insert data into database
@@ -31,7 +27,6 @@ export default async function NewPost() {
         postTitle
       ],
     );
-
     // revalidate
     revalidatePath("/new-post");
     revalidatePath(`/timeline/${userId}`);

@@ -7,16 +7,31 @@ import { db } from "@/utils/dbConn";
 
 export default async function Posts({ params }) {
   const { userId } = await params;
-
-  // fetch posts data from db
   const { rows } = await db.query(
-    `SELECT id, content, title FROM social_posts WHERE user_id=$1 ORDER BY id DESC`, [userId]
+    `SELECT
+    social_posts.id,
+    social_posts.content,
+    social_posts.title,
+    social_users.user_name
+    FROM social_users
+    JOIN social_posts ON social_users.id = social_posts.user_id
+    WHERE social_users.id=$1
+    ORDER BY id DESC`,
+    [userId]
   );
+
+  let pageHeading;
+
+  if (rows.length > 0) {
+    pageHeading = `${rows[0].user_name}'s Timeline`;
+  } else {
+    pageHeading = "No Posts!";
+  }
 
   return (
     <>
       <Header />
-      <h1>Post Stream</h1>
+      <h1>{pageHeading}</h1>
       <main>
         <section>
           <nav>
